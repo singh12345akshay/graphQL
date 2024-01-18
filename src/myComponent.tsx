@@ -3,7 +3,14 @@ import { useQuery, gql } from '@apollo/client';
 
 const GET_DATA = gql`
   query {
-    
+    launches {
+      id
+      mission_name
+      launch_date_utc
+      rocket {
+        rocket_name
+      }
+    }
   }
 `;
 
@@ -13,7 +20,7 @@ const MyComponent = () => {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
 
-  console.log(data);
+  console.log(data,"----------> Data");  
 
   return (
     <div>
